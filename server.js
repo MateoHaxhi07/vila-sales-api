@@ -73,7 +73,7 @@ app.get("/api/sales/since", async (req, res) => {
     const limit = Math.min(parseInt(req.query.limit || "50000", 10), 100000);
 
     const sql = `${BASE_SELECT}
-      WHERE "Datetime" > $1
+      WHERE "Datetime" > $1::timestamp
       ORDER BY "Datetime" ASC
       LIMIT ${limit}`;
 
@@ -95,7 +95,7 @@ app.get("/api/sales/range", async (req, res) => {
     const limit = Math.min(parseInt(req.query.limit || "100000", 10), 200000);
 
     const sql = `${BASE_SELECT}
-      WHERE "Datetime" >= $1 AND "Datetime" < $2
+      WHERE "Datetime" >= $1::timestamp AND "Datetime" < $2::timestamp
       ORDER BY "Datetime" ASC
       LIMIT ${limit}`;
 
