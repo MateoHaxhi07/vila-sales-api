@@ -52,15 +52,16 @@ app.use("/api", (req, res, next) => {
  */
 const BASE_SELECT = `
   SELECT
-    "Order_ID"                           AS order_id,
-    "Seller"                             AS seller,
-    "Article_Name"                       AS article_name,
-    "Category"                           AS category,
-    COALESCE("Quantity", 0)::numeric     AS quantity,
+    "Order_ID"                                AS order_id,
+    "Seller"                                  AS seller,
+    "Article_Name"                            AS article_name,
+    "Category"                                AS category,
+    COALESCE("Quantity", 0)::numeric          AS quantity,
     COALESCE("Total_Article_Price", 0)::numeric AS total_article_price,
-    "Datetime"                           AS datetime,
-    COALESCE("Seller Category", '')      AS seller_category,  -- NOTE: space in the name
-    COALESCE("Buyer_NIPT", '')           AS buyer_nipt
+    "Datetime"                                AS datetime,
+    COALESCE("Seller Category", '')           AS seller_category,
+    COALESCE("Buyer_NIPT", '')                AS buyer_nipt,
+    COALESCE("Buyer_Name", '')                AS buyer_name   -- NEW
   FROM sales
 `;
 
